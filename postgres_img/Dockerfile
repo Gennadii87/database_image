@@ -17,10 +17,8 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 
 ENV LANG=en_US.UTF-8
 
-
 RUN touch /docker-entrypoint-initdb.d/init.sql
 
-# Даем все привилегии для базы данных
 RUN echo "GRANT ALL PRIVILEGES ON DATABASE ${POSTGRES_DB} TO ${POSTGRES_USER};" > /docker-entrypoint-initdb.d/init.sql
 
 VOLUME /var/lib/postgresql/data
